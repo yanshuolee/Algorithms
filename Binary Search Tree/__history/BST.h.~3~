@@ -1,0 +1,41 @@
+//---------------------------------------------------------------------------
+
+#ifndef BSTH
+#define BSTH
+//---------------------------------------------------------------------------
+#include <System.Classes.hpp>
+#include <Vcl.Controls.hpp>
+#include <Vcl.StdCtrls.hpp>
+#include <Vcl.Forms.hpp>
+#include <Vcl.ComCtrls.hpp>
+
+//---------------------------------------------------------------------------
+class Twindow : public TForm
+{
+__published:	// IDE-managed Components
+	TEdit *data;
+	TButton *insertData;
+	TMemo *output;
+	TButton *inorderTraversal;
+	TButton *preorderTraversal;
+	TButton *postorderTraversal;
+	TEdit *numOfNode;
+	TButton *addRandomNode;
+	TEdit *min;
+	TEdit *max;
+	TTrackBar *maxTrackBar;
+	TTrackBar *minTrackBar;
+	void __fastcall insertDataClick(TObject *Sender);
+	void __fastcall inorderTraversalClick(TObject *Sender);
+	void __fastcall preorderTraversalClick(TObject *Sender);
+	void __fastcall postorderTraversalClick(TObject *Sender);
+	void __fastcall addRandomNodeClick(TObject *Sender);
+	void __fastcall minTrackBarChange(TObject *Sender);
+private:	// User declarations
+public:		// User declarations
+	__fastcall Twindow(TComponent* Owner);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE Twindow *window;
+//---------------------------------------------------------------------------
+#endif

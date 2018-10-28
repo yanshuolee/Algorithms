@@ -1,0 +1,255 @@
+object window: Twindow
+  Left = 0
+  Top = 165
+  Caption = 'Binary Search Tree by Y.S.L'
+  ClientHeight = 516
+  ClientWidth = 622
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poDesigned
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Randon_range: TLabel
+    Left = 8
+    Top = 256
+    Width = 72
+    Height = 13
+    Caption = 'Randon range:'
+  end
+  object From: TLabel
+    Left = 8
+    Top = 282
+    Width = 24
+    Height = 13
+    Caption = 'From'
+  end
+  object To: TLabel
+    Left = 14
+    Top = 323
+    Width = 12
+    Height = 13
+    Caption = 'To'
+  end
+  object Label1: TLabel
+    Left = 8
+    Top = 125
+    Width = 99
+    Height = 13
+    Caption = 'Recursive Traversal:'
+  end
+  object Label2: TLabel
+    Left = 8
+    Top = 49
+    Width = 27
+    Height = 13
+    Caption = 'Data:'
+  end
+  object Label3: TLabel
+    Left = 8
+    Top = 219
+    Width = 43
+    Height = 13
+    Caption = 'Random:'
+  end
+  object Label4: TLabel
+    Left = 168
+    Top = 57
+    Width = 72
+    Height = 13
+    Caption = '(auto-addition)'
+  end
+  object Label5: TLabel
+    Left = 24
+    Top = 379
+    Width = 31
+    Height = 18
+    Caption = 'infix:'
+  end
+  object Label6: TLabel
+    Left = 19
+    Top = 403
+    Width = 32
+    Height = 13
+    Caption = 'prefix:'
+  end
+  object Label7: TLabel
+    Left = 14
+    Top = 451
+    Width = 37
+    Height = 13
+    Caption = 'postfix:'
+  end
+  object data: TEdit
+    Left = 37
+    Top = 46
+    Width = 43
+    Height = 21
+    TabOrder = 1
+    Text = '50'
+  end
+  object insertData: TButton
+    Left = 96
+    Top = 21
+    Width = 66
+    Height = 25
+    Caption = 'Insert Data'
+    TabOrder = 0
+    OnClick = insertDataClick
+  end
+  object output: TMemo
+    Left = 269
+    Top = 23
+    Width = 332
+    Height = 209
+    Lines.Strings = (
+      'Output:')
+    TabOrder = 2
+  end
+  object inorderTraversal: TButton
+    Left = 18
+    Top = 144
+    Width = 57
+    Height = 33
+    Caption = 'inorder'
+    TabOrder = 3
+    OnClick = inorderTraversalClick
+  end
+  object preorderTraversal: TButton
+    Left = 81
+    Top = 144
+    Width = 58
+    Height = 33
+    Caption = 'preorder'
+    TabOrder = 4
+    OnClick = preorderTraversalClick
+  end
+  object postorderTraversal: TButton
+    Left = 145
+    Top = 144
+    Width = 66
+    Height = 33
+    Caption = 'postorder'
+    TabOrder = 5
+    OnClick = postorderTraversalClick
+  end
+  object numOfNode: TEdit
+    Left = 54
+    Top = 216
+    Width = 45
+    Height = 21
+    TabOrder = 6
+    Text = '10'
+  end
+  object addRandomNode: TButton
+    Left = 105
+    Top = 214
+    Width = 88
+    Height = 25
+    Caption = 'Add Rdm Node'
+    TabOrder = 7
+    OnClick = addRandomNodeClick
+  end
+  object min: TEdit
+    Left = 188
+    Top = 282
+    Width = 45
+    Height = 21
+    TabOrder = 8
+    Text = '100'
+    OnChange = minChange
+  end
+  object max: TEdit
+    Left = 188
+    Top = 320
+    Width = 45
+    Height = 21
+    TabOrder = 9
+    Text = '1000'
+  end
+  object maxTrackBar: TTrackBar
+    Left = 32
+    Top = 320
+    Width = 150
+    Height = 21
+    Max = 10000
+    Min = 10
+    Position = 1199
+    TabOrder = 10
+    OnChange = maxTrackBarChange
+  end
+  object minTrackBar: TTrackBar
+    Left = 32
+    Top = 282
+    Width = 150
+    Height = 18
+    Max = 1000
+    Position = 100
+    TabOrder = 11
+    OnChange = minTrackBarChange
+  end
+  object searchBST: TButton
+    Left = 96
+    Top = 52
+    Width = 66
+    Height = 25
+    Caption = 'Search Data'
+    TabOrder = 12
+    OnClick = searchBSTClick
+  end
+  object removeData: TButton
+    Left = 96
+    Top = 83
+    Width = 66
+    Height = 25
+    Caption = 'Delete Data'
+    TabOrder = 13
+    OnClick = removeDataClick
+  end
+  object infix: TEdit
+    Left = 57
+    Top = 376
+    Width = 82
+    Height = 21
+    TabOrder = 14
+    Text = 'HBJAFDGCE'
+  end
+  object prefix: TEdit
+    Left = 57
+    Top = 403
+    Width = 82
+    Height = 21
+    TabOrder = 15
+    Text = 'ABHJCDFGE'
+  end
+  object infix_prefix: TButton
+    Left = 158
+    Top = 384
+    Width = 75
+    Height = 25
+    Caption = 'infix+prefix'
+    TabOrder = 16
+    OnClick = infix_prefixClick
+  end
+  object postfix: TEdit
+    Left = 57
+    Top = 448
+    Width = 82
+    Height = 21
+    TabOrder = 17
+    Text = 'HJBFGDECA'
+  end
+  object infix_postfix: TButton
+    Left = 158
+    Top = 446
+    Width = 75
+    Height = 25
+    Caption = 'infix+postfix'
+    TabOrder = 18
+    OnClick = infix_postfixClick
+  end
+end

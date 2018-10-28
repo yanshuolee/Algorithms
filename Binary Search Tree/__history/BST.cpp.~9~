@@ -1,0 +1,347 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "BST.h"
+#include <string.h>
+#include <dstring.h>
+#include <string.h>
+#include <iostream>
+
+// node structure
+struct BSTnode{
+	struct BSTnode * leftchild;
+	int data;
+	struct BSTnode * rightchild;
+};
+
+// root declaration
+struct BSTnode * root;
+
+String output_line;
+
+define MAX_SIZE_HEAP 100;
+int heap[MAX_SIZE_HEAP];
+
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+Twindow *window;
+//---------------------------------------------------------------------------
+__fastcall Twindow::Twindow(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+
+// add new node
+struct BSTnode * newNode(int x)
+{
+	struct BSTnode * p = (struct BSTnode *)malloc(sizeof(struct BSTnode));
+	p->data = x;
+	p->leftchild = NULL;
+	p->rightchild = NULL;
+	return p;
+}
+
+// insert node
+struct BSTnode * insertBST(struct BSTnode * node, int x)
+{
+	if(node == NULL) return newNode(x);
+	if(node->data > x)
+		node->leftchild = insertBST(node->leftchild, x);
+	else
+		node->rightchild = insertBST(node->rightchild, x);
+	return node;
+}
+
+// inorder traversal using recursion
+void inorder(struct BSTnode * node)
+{
+	if(node != NULL)
+	{
+		inorder(node->leftchild);
+		//window->output->Lines->Add(node->data);
+		output_line += IntToStr(node->data) + "->";
+		inorder(node->rightchild);
+	}
+}
+
+struct BSTnode * inorderSuccessor(struct BSTnode * node)
+{
+	 if(node != NULL)
+	 {
+		 inorderSuccessor(node->leftchild);
+
+	 }
+	 return node;
+}
+
+// search data
+struct BSTnode * searchData(struct BSTnode * node, int x)
+{
+	while(node != NULL)
+	{
+		if(x == node->data)
+			return node;
+		if(node->data > x)
+			node = node->leftchild;
+		else
+			node = node->rightchild;
+	}
+	return NULL;
+
+}
+
+// preorder traversal
+void preorder(struct BSTnode * node)
+{
+	if(node != NULL)
+	{
+		output_line += IntToStr(node->data) + "->";
+		preorder(node->leftchild);
+        preorder(node->rightchild);
+    }
+}
+
+// postorder traversal
+void postorder(struct BSTnode * node)
+{
+	if(node != NULL)
+	{
+		postorder(node->leftchild);
+		postorder(node->rightchild);
+		output_line += IntToStr(node->data) + "->";
+    }
+}
+
+// delete node
+struct BSTnode * deleteBST(struct BSTnode * node, int x)
+{
+	struct BSTnode * temp;
+	if(node == NULL)
+	{
+		window->output->Lines->Add(IntToStr(x) + " is not in the tree!");
+		return node;
+    }
+
+	if(node->data > x)
+		node->leftchild = deleteBST(node->leftchild, x);
+	else if(node->data < x)
+		node->rightchild = deleteBST(node->rightchild, x);
+	else
+	{
+		if((node->leftchild == NULL) || (node->rightchild == NULL))
+		{
+			temp = node->leftchild ? node->leftchild : node->rightchild;
+			// this node is a leaf
+			if(temp == NULL)
+			{
+				//temp = node;
+				node = NULL;
+			}
+			else
+				* node = * temp;
+
+			free(temp);
+		}
+		else
+		{
+			temp = inorderSuccessor(node->rightchild);
+			node->data = temp->data;
+			node->rightchild = deleteBST(node->rightchild, temp->data);
+		}
+	}
+
+	return node;
+}
+
+// infix + prefix
+struct BSTnode * BTree_Infix_Prefix(AnsiString infix, AnsiString prefix)
+{
+	int infix_index;
+	struct BSTnode * node;
+	if(infix.Length()==0 || prefix.Length()==0) return NULL;
+	node = (struct BSTnode *)malloc(sizeof(struct BSTnode));
+	node->data = (int)prefix[1];
+	// using for loop
+	// using find function
+	infix_index = AnsiPos(prefix[1], infix);
+	node->leftchild = BTree_Infix_Prefix(infix.SubString(1,infix_index-1), prefix.SubString(2,infix_index-1));
+	node->rightchild = BTree_Infix_Prefix(infix.SubString(infix_index+1,infix.Length()-infix_index+1), prefix.SubString(infix_index+1,prefix.Length()-infix_index+1));
+	return node;
+}
+
+// infix + postfix
+struct BSTnode * BTree_Infix_Postfix(AnsiString infix, AnsiString postfix)
+{
+	int infix_postfix;
+	struct BSTnode * node;
+	if(infix.Length()==0 || postfix.Length()==0) return NULL;
+	node = (struct BSTnode *)malloc(sizeof(struct BSTnode));
+	node->data = (int)postfix[postfix.Length()];
+	infix_postfix = AnsiPos(postfix[postfix.Length()],infix);
+	node->leftchild = BTree_Infix_Postfix(infix.SubString(1,infix_postfix-1), postfix.SubString(1,infix_postfix-1));
+	node->rightchild = BTree_Infix_Postfix(infix.SubString(infix_postfix+1,infix.Length()-infix_postfix), postfix.SubString(infix_postfix,postfix.Length()-infix_postfix));
+    return node;
+
+}
+
+// add node to heap
+int n, i;
+void insertHeap(int x)
+{
+	if(n==MAX_SIZE_HEAP) heapFull();
+	else
+	{
+		n++;
+		while((x > heap[i/2]) && (i > 1))
+		{
+			heap[i] = heap[i/2];
+			i /= 2;
+		}
+		heap[i] = x;
+    }
+}
+
+//---------------------------------------------------------------------------
+void __fastcall Twindow::insertDataClick(TObject *Sender)
+{
+	//wchar_t *i = data->Text.c_str();
+	AnsiString i = data->Text;
+	int inputData = (int)i[1];
+	root = insertBST(root, inputData);
+	output_line = ">>>  ";
+	inorder(root);
+	output->Lines->Add(data->Text + " has been added!");
+	output->Lines->Add(output_line);
+    output->Lines->Add("");
+}
+//---------------------------------------------------------------------------
+void __fastcall Twindow::inorderTraversalClick(TObject *Sender)
+{
+	output_line = ">>>  ";
+	inorder(root);
+	output->Lines->Add(output_line);
+	output->Lines->Add("");
+}
+//---------------------------------------------------------------------------
+
+void __fastcall Twindow::preorderTraversalClick(TObject *Sender)
+{
+	output_line = ">>>  ";
+	preorder(root);
+	output->Lines->Add(output_line);
+	output->Lines->Add("");
+}
+//---------------------------------------------------------------------------
+
+void __fastcall Twindow::postorderTraversalClick(TObject *Sender)
+{
+	output_line = ">>>  ";
+	postorder(root);
+	output->Lines->Add(output_line);
+	output->Lines->Add("");
+}
+//---------------------------------------------------------------------------
+
+void __fastcall Twindow::addRandomNodeClick(TObject *Sender)
+{
+	int data_size = StrToInt(numOfNode->Text);
+	int i;
+	int * data = (int *)malloc(data_size * sizeof(int));
+	int range_min = StrToInt(min->Text);
+	int range_max = StrToInt(max->Text);
+	if(range_min < range_max)
+	{
+        for(i = 0 ; i < data_size ; i++)
+		{
+			data[i] = rand() % (range_max-range_min+1) + range_min;
+			root = insertBST(root, data[i]);
+		}
+		output_line = ">>>  ";
+		inorder(root);
+        output->Lines->Add("Here you go!");
+		output->Lines->Add(output_line);
+        output->Lines->Add("");
+	}
+	else
+	{
+		output->Lines->Add("invalid range!");
+    }
+
+
+}
+//---------------------------------------------------------------------------
+
+void __fastcall Twindow::minTrackBarChange(TObject *Sender)
+{
+	min->Text = IntToStr(((TTrackBar*)Sender)->Position);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall Twindow::minChange(TObject *Sender)
+{
+	min->Text = IntToStr(minTrackBar->Position);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall Twindow::maxTrackBarChange(TObject *Sender)
+{
+    max->Text = IntToStr(((TTrackBar*)Sender)->Position);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall Twindow::searchBSTClick(TObject *Sender)
+{
+	output_line = ">>>  ";
+	int x = StrToInt(data->Text);
+	struct BSTnode * p = searchData(root, x);
+	if(p != NULL)
+	{
+		window->output->Lines->Add(IntToStr(p->data) + " has been found!");
+		inorder(root);
+		window->output->Lines->Add(output_line);
+	}
+	else
+	{
+		window->output->Lines->Add(data->Text + " not found, but has been added to tree!");
+		root = insertBST(root, x);
+		inorder(root);
+		output->Lines->Add(output_line);
+    }
+	output->Lines->Add("");
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall Twindow::removeDataClick(TObject *Sender)
+{
+	int x = StrToInt(data->Text);
+	output_line = ">>>  ";
+	root = deleteBST(root, x);
+	inorder(root);
+	output->Lines->Add(output_line);
+	output->Lines->Add("");
+}
+//---------------------------------------------------------------------------
+
+void __fastcall Twindow::infix_prefixClick(TObject *Sender)
+{
+	AnsiString i = infix->Text;
+	AnsiString p = prefix->Text;
+	root = BTree_Infix_Prefix(i, p);
+	inorder(root);
+	output->Lines->Add(output_line);
+}
+//---------------------------------------------------------------------------
+void __fastcall Twindow::infix_postfixClick(TObject *Sender)
+{
+	AnsiString i = infix->Text;
+	AnsiString p = postfix->Text;
+	root = BTree_Infix_Postfix(i,p);
+	inorder(root);
+	output->Lines->Add(output_line);
+}
+//---------------------------------------------------------------------------
+
