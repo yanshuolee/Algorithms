@@ -1,0 +1,165 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 548
+  ClientWidth = 629
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Splitter1: TSplitter
+    Left = 209
+    Top = 0
+    Width = 10
+    Height = 548
+    ExplicitLeft = 249
+  end
+  object ListBox1: TListBox
+    Left = 0
+    Top = 0
+    Width = 209
+    Height = 548
+    Align = alLeft
+    ItemHeight = 13
+    TabOrder = 0
+    ExplicitLeft = 4
+  end
+  object PageControl1: TPageControl
+    Left = 219
+    Top = 0
+    Width = 410
+    Height = 548
+    Align = alClient
+    TabOrder = 1
+    ExplicitLeft = 255
+    ExplicitWidth = 374
+  end
+  object times: TEdit
+    Left = 63
+    Top = 48
+    Width = 82
+    Height = 21
+    TabOrder = 2
+    Text = '10'
+  end
+  object StaticText1: TStaticText
+    Left = 16
+    Top = 48
+    Width = 41
+    Height = 17
+    Caption = 'Times:'
+    TabOrder = 3
+  end
+  object num: TEdit
+    Left = 64
+    Top = 84
+    Width = 81
+    Height = 21
+    TabOrder = 4
+    Text = '1000'
+  end
+  object StaticText2: TStaticText
+    Left = 40
+    Top = 84
+    Width = 18
+    Height = 17
+    Caption = 'N: '
+    TabOrder = 5
+  end
+  object range: TEdit
+    Left = 63
+    Top = 124
+    Width = 82
+    Height = 21
+    TabOrder = 6
+    Text = '10000'
+  end
+  object StaticText3: TStaticText
+    Left = 18
+    Top = 124
+    Width = 39
+    Height = 17
+    Caption = 'Range:'
+    TabOrder = 7
+  end
+  object StaticText4: TStaticText
+    Left = 8
+    Top = 192
+    Width = 86
+    Height = 17
+    Caption = 'Sorting Methods:'
+    TabOrder = 8
+  end
+  object CheckBox1: TCheckBox
+    Left = 48
+    Top = 232
+    Width = 97
+    Height = 17
+    Caption = ' Bubble Sort'
+    TabOrder = 9
+  end
+  object CheckBox2: TCheckBox
+    Left = 48
+    Top = 255
+    Width = 97
+    Height = 17
+    Caption = ' Selection Sort'
+    TabOrder = 10
+  end
+  object CheckBox3: TCheckBox
+    Left = 48
+    Top = 278
+    Width = 97
+    Height = 17
+    Caption = ' Insertion Sort'
+    TabOrder = 11
+  end
+  object CheckBox4: TCheckBox
+    Left = 48
+    Top = 301
+    Width = 97
+    Height = 17
+    Caption = ' Merge Sort'
+    TabOrder = 12
+  end
+  object CheckBox5: TCheckBox
+    Left = 48
+    Top = 324
+    Width = 97
+    Height = 17
+    Caption = ' Quick Sort'
+    TabOrder = 13
+  end
+  object CheckBox6: TCheckBox
+    Left = 48
+    Top = 347
+    Width = 97
+    Height = 17
+    Caption = ' Heap Sort'
+    TabOrder = 14
+  end
+  object CheckBox7: TCheckBox
+    Left = 48
+    Top = 370
+    Width = 97
+    Height = 17
+    Caption = ' Radix Sort'
+    TabOrder = 15
+  end
+  object CheckBox8: TCheckBox
+    Left = 112
+    Top = 159
+    Width = 73
+    Height = 17
+    Caption = 'Show Data'
+    Checked = True
+    State = cbChecked
+    TabOrder = 16
+  end
+end
