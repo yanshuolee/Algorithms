@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2019/03/03 16:30:54.325,=C:\Users\Yanshuo\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>2019/03/03 16:30:54.531,=C:\Users\Yanshuo\Documents\Embarcadero\Studio\Projects\Unit1.cpp</Transaction>
+    <Transaction>2019/03/03 16:59:30.071,D:\Algorithms Exercises\#3 LCS\LCS.dfm=C:\Users\Yanshuo\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2019/03/03 16:59:30.071,D:\Algorithms Exercises\#3 LCS\LCS.h=C:\Users\Yanshuo\Documents\Embarcadero\Studio\Projects\Unit1.h</Transaction>
+    <Transaction>2019/03/03 16:59:30.071,D:\Algorithms Exercises\#3 LCS\LCS.cpp=C:\Users\Yanshuo\Documents\Embarcadero\Studio\Projects\Unit1.cpp</Transaction>
+    <Transaction>2019/03/03 16:59:41.479,D:\Algorithms Exercises\#3 LCS\Project_LCS.h=C:\Users\Yanshuo\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>2019/03/03 16:59:53.191,D:\Algorithms Exercises\#3 LCS\LCS_proj.cbproj=C:\Users\Yanshuo\Documents\Embarcadero\Studio\Projects\Project1.cbproj</Transaction>
+  </Transactions>
+</BorlandProject>

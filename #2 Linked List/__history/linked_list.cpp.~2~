@@ -1,0 +1,73 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "linked_list.h"
+struct node *first;
+struct node *last;
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TForm1 *Form1;
+
+struct node
+{
+	int data;
+	struct node *next;
+};
+
+struct node *NewNode(int element)
+{
+	struct node *p;
+	p = (struct node *)malloc(sizeof(struct node));
+	if (p==NULL) {
+		// print out error msg
+	}
+	p->data = element;
+	p->next = NULL;
+	return p;
+}
+
+void printList()
+{
+	String list = "";
+	struct node *p;
+	for (p=first->next; p!=first; list += IntToStr(p->data)+"==>", p=p->next);
+	Form1->Memo1->Lines->Add(list);
+}
+
+//---------------------------------------------------------------------------
+__fastcall TForm1::TForm1(TComponent* Owner)
+	: TForm(Owner)
+{
+	first = NewNode(0);
+	first->next = first;
+	last = first;
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm1::Button1Click(TObject *Sender)
+{
+	int element;
+	struct node *tmp;
+	element = StrToInt(Edit1->Text);
+	tmp = NewNode(element);
+	tmp->next = first->next;
+	first->next = tmp;
+	if (tmp->next == first) last=tmp;
+	printList();
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm1::Button2Click(TObject *Sender)
+{
+	int element;
+	struct node *tmp;
+	element = StrToInt(Edit1->Text);
+	tmp = NewNode(element);
+	tmp->next = last->next;
+	last->next = tmp;
+	last = tmp;
+	printList();
+
+}
+//---------------------------------------------------------------------------

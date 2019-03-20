@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2019/02/05 21:57:40.000.413,=C:\Users\Yanshuo\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>2019/02/05 21:57:40.000.952,=C:\Users\Yanshuo\Documents\Embarcadero\Studio\Projects\Unit1.cpp</Transaction>
+    <Transaction>2019/02/05 23:08:07.000.310,C:\Users\Yanshuo\Documents\Embarcadero\Studio\Projects\Unit1.h=D:\Algorithms Exercises\#1 Permutation\permutation.h</Transaction>
+    <Transaction>2019/02/05 23:08:07.000.310,C:\Users\Yanshuo\Documents\Embarcadero\Studio\Projects\Unit1.cpp=D:\Algorithms Exercises\#1 Permutation\permutation.cpp</Transaction>
+    <Transaction>2019/02/05 23:08:07.000.310,C:\Users\Yanshuo\Documents\Embarcadero\Studio\Projects\Unit1.dfm=D:\Algorithms Exercises\#1 Permutation\permutation.dfm</Transaction>
+    <Transaction>2019/02/05 23:08:30.000.617,C:\Users\Yanshuo\Documents\Embarcadero\Studio\Projects\Project1PCH1.h=D:\Algorithms Exercises\#1 Permutation\permutation_proj.h</Transaction>
+    <Transaction>2019/02/05 23:08:45.000.160,C:\Users\Yanshuo\Documents\Embarcadero\Studio\Projects\Project1.cbproj=D:\Algorithms Exercises\#1 Permutation\permutation_project.cbproj</Transaction>
+  </Transactions>
+</BorlandProject>
